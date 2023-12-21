@@ -32,9 +32,8 @@ class MyDB {
     for (let i = 0; i < quantity; i++) {
       const ticket = this.create(username, price);
       result.push(ticket);
-
-      return result;
     }
+    return result;
   }
 
   // -------------------------------------------------------
@@ -122,18 +121,17 @@ class MyDB {
    * @returns {Array<Ticket>}
    */
   draw(winnerCount) {
-    let indexes = new Array(winnerCount);
+    let winnerIndexes = new Array(winnerCount);
+    let index = 0;
+    while (index < winnerCount) {
+      let winnerIndex = Math.floor(Math.random() * this.tickets.length);
+      console.log("Winner index", winnerIndex);
 
-    for (let i = 0; i < indexes.length; i++) {
-      let index = Math.floor(Math.random() * this.tickets.length);
-
-      while (indexes.includes(index)) {
-        index = Math.floor(Math.random() * this.tickets.length);
+      if (!winnerIndexes.includes(winnerIndex)) {
+        winnerIndexes[index++] = winnerIndex;
       }
-      indexes.push(index);
     }
-
-    const winners = indexes.map((index) => this.tickets[index]);
+    const winners = winnerIndexes.map((index) => this.tickets[index]);
     return winners;
   }
 }
