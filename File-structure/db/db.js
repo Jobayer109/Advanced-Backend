@@ -87,7 +87,7 @@ class MyDB {
    * @param {string} ticketId
    * @param {{username: string, price: number}} ticketBody
    */
-  update(ticketId, ticketBody) {
+  updateById(ticketId, ticketBody) {
     const ticket = this.findById(ticketId);
     ticket.username = ticketBody.username;
     ticket.price = ticketBody.price;
@@ -102,7 +102,7 @@ class MyDB {
    * Delete ticket
    * @param {string} ticketId
    */
-  delete(ticketId) {
+  deleteById(ticketId) {
     const index = this.tickets.findIndex((ticket) => ticket.id === ticketId);
 
     if (index !== -1) {
