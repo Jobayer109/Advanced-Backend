@@ -129,6 +129,7 @@ class MyDB {
 
       if (!winnerIndexes.includes(winnerIndex)) {
         winnerIndexes[index++] = winnerIndex;
+        continue;
       }
     }
     const winners = winnerIndexes.map((index) => this.tickets[index]);
